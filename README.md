@@ -10,6 +10,7 @@
   - a reference SNP and a definition of bases downstream of the reference SNP - all markers in this range will be extracted
 - the .tped files can have common rs-identifier or Illumina exm-identifier (exome data)
   - for the exome-data scenario, a Illumina auxillery file is necessary which contains the annotation from exm- to rs-identifiers
+    - [Download page for Illumina support files e.g. auxillery files for specific arrays](http://support.illumina.com/downloads.html)
     - the auxillery file should has two columns: exm-identifier (column 1) and rs-identifer (column 2)
 	- the user has to bring the file into the above-mentioned format (if it is not the existing format) 
   - the user only has to supply common rs-identifiers, irrespective whether it is exome- or common SNP-chip data
