@@ -35,25 +35,21 @@ In the near future I want to add extensive comments for the different functions 
 
 I have to admit that the program is not coded in best coding practice in version 0.34.
 
-## Example usage (this is also written in the ReadME)
+## Example usage (this is also written in the ReadMe)
 
-####### Example 1 (based on Windows cmd)
+###### Example 1 (based on Windows cmd)
 You have exome data and want to extract all SNPs 40000 base pairs down stream of a reference SNP.
 
 Beside -t, -o and -b  you have to supply the options -a -s -d -c
 
 
-Assume the "test.tped" and "test.tfam" file are stored in the folder "D:\Test\GWAS"
+- Assume the "test.tped" and "test.tfam" file are stored in the folder "D:\Test\GWAS"
+- Assume the auxillery file "data_aux.txt" is stored in the folder "D:\Test\Exomeinfo"
+- Assume the reference snp rs1234 on chromosome 2
+- Assume we want to extract all SNPs 40000 base pairs down stream of the reference snp
+- Assume we only want the recoded models for all extracted SNPs and not the single output file per SNP
 
-Assume the auxillery file "data_aux.txt" is stored in the folder "D:\Test\Exomeinfo"
-
-Assume the reference snp rs1234 on chromosome 2
-
-Assume we want to extract all SNPs 40000 base pairs down stream of the reference snp
-
-Assume we only want the recoded models for all extracted SNPs and not the single output file per SNP
-
-The command would be:
+**The command would be:**
 ```
 python gwasrecode.py -t d:\Test\GWAS\test.tped -o outtest.txt -b no -a d:\Test\Exomeinfo\data_aux.txt -s rs1234 -d 40000 -c 2
 ```
@@ -65,13 +61,11 @@ You have common SNP-chip data and want to extract a list of SNPs.
 Beside -t, -o and -b you only have to supply the option -l.
 
 
-Assume the "test.tped" and "test.tfam" file are stored in the folder "D:\Test\GWAS"
+- Assume the "test.tped" and "test.tfam" file are stored in the folder "D:\Test\GWAS"
+- Assume the SNP-list-file "snps.txt", stored in the folder "D:\Test\GWAS\List" (this file contains rs-numbers you want to extract, every identifier on a new line)
+- Assume we want both, the recoded models for all extracted SNPs and the single output file per SNP
 
-Assume the SNP-list-file "snps.txt", stored in the folder "D:\Test\GWAS\List" (this file contains rs-numbers you want to extract, every identifier on a new line)
-
-Assume we want both, the recoded models for all extracted SNPs and the single output file per SNP
-
-The command would be:
+**The command would be:**
 ```
 python gwasrecode.py -t d:\Test\GWAS\test.tped -o outtest2.txt -b yes -l d:\Test\GWAS\List\snps.txt
 ```
