@@ -1,8 +1,8 @@
 # gwasrecode is a program for extracting and recoding specific markers from PLINK associated .tped-files
 
-**It was designed for non programmers
+**It was designed for non programmers**
 
-**However, one need minimal command line knowledge to use to program properly (see README-FILE)
+**However, one need minimal command line knowledge to use to program properly (see README-FILE)**
 
 ## Functionality and description
 - extract specific markers from .tped-files based on:
@@ -14,7 +14,7 @@
 	- the user has to bring the file into the above-mentioned format (if it is not the existing format) 
   - the user only has to supply common rs-identifiers, irrespective whether it is exome- or common SNP-chip data
 - gwasrecode was tested under Linux and Windows (version 7 or higher)
-- **A DETAILED DESCRIPTION OF THE USAGE, ALSO FOR THE GENERAL COMMAND LINE USE, ARE WRITTEN IN THE README-FILE
+- **A DETAILED DESCRIPTION OF THE USAGE, ALSO FOR THE GENERAL COMMAND LINE USE, ARE WRITTEN IN THE README-FILE**
 
 ## Requirements
 Python 2.7.x
