@@ -1,6 +1,7 @@
 # gwasrecode is a program for extracting and recoding specific markers from PLINK associated .tped-files
 
 **It was designed for non programmers
+
 **However, one need minimal command line knowledge to use to program properly (see README-FILE)
 
 ## Functionality and description
