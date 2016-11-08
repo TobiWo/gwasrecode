@@ -1,6 +1,6 @@
 from optparse import OptionParser
-from Extract_SNPS_Tped_viaDistance_v034 import ExtractSNP
-import allel_recoding_v034 as ac
+from Extract_SNPS_Tped_viaDistance_v035 import ExtractSNP
+import allel_recoding_v035 as ac
 import os
 import platform
 import sys

@@ -83,9 +83,9 @@ class AllelRecode(object):
             if line == '':
                 continue
             rs = re.search("rs[0-9]+", line).group(0)
-            re_c = re.compile("[0-9]+ [A-Z]")
-            pos = re_c.search(line).end()
-            line2 = line[(pos-1):]
+            re_c = re.compile("[0-9]+ [ATGC0] [ATGC0] [ATGC0] [ATGC0]")
+            pos = re_c.search(line).end()-7
+            line2 = line[(pos):]
             line2 = line2.replace(" ", "")
 
             allels = self.allel_counter(line2)
@@ -161,8 +161,8 @@ class AllelRecode(object):
                 if line == '':
                     continue
                 rs = re.search("rs[0-9]+", line).group(0)
-                re_c = re.compile("[0-9]+ [A-Z]")
-                pos = re_c.search(line).end()
+                re_c = re.compile("[0-9]+ [ATGC0] [ATGC0] [ATGC0] [ATGC0]")
+                pos = re_c.search(line).end()-7
                 line2 = line[(pos - 1):]
                 line2 = line2.replace(" ", "")
 
@@ -210,6 +210,11 @@ class AllelRecode(object):
                 recode_list.append(collection)
 
                 recode_list_t = [list(x) for x in zip(*recode_list)]
+                # recode_list_t = list()
+                #
+                # for x in recode_list:
+                #     print len(x)
+                #     print x
 
             if len(recode_list) == 1:
                 raise IndexError("Only homozygous SNPs in data-set")

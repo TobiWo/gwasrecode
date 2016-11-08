@@ -69,7 +69,7 @@ class ExtractSNP(object):
                 ref_snp = fline
 
         if ref_snp is None:
-            sys.exit(self.snpname + " not covered on chip!")
+            raise IndexError("reference SNP %s not in tped-file" % self.snpname)
 
         return ref_snp
 
@@ -123,17 +123,23 @@ class ExtractSNP(object):
                 if s in line and len(re.search("exm\S+", line).group(0)) == len(s):
                     rs_num = re.search("rs[0-9]+", line).group(0)
                     rs_collect.append(rs_num)
-            exome.seek(0)  # because the loop over the auxillery file should be repeated for every exm-number...
+            exome.seek(0)  # becaus e the loop over the auxillery file should be repeated for every exm-number...
             # ...I need to jump back to the start of the file after every complete auxillery loop
 
         # create a new empty list for the final lines (with replaced rs-numbers)
         # and do the replacing
         # the exvar-variable is only a iteration variable to get access to the exm-number-list and the rs-number-list and use these for search and replace
         collect_final = list()
+
         exvar = 0
         for item in collect_exm:
-            item = item.replace(exm_list[exvar], rs_collect[exvar])
-            exvar += 1
+            if re.compile("rs\S+").search(item) is not None:
+                item = item
+            elif re.compile("exm\S+").search(item) is not None:
+                item = item.replace(exm_list[exvar], rs_collect[exvar])
+                exvar += 1
+            else:
+                raise Exception("Identifier is neither 'rs' nor 'exm'...Program stopped...Check your tped-file!\n %s" % item)
             collect_final.append(item)
 
         for item in collect_final:
@@ -149,6 +155,7 @@ class ExtractSNP(object):
         ref_snp = self.snpname
         tpedfile = self.tped_handler()
         outfile = self.out_exist()
+        ref_bool = False
 
         for line in tpedfile:
             line = line.rstrip()
@@ -156,6 +163,11 @@ class ExtractSNP(object):
                 start_pos = re.search("\s[0-9]{2,}\s", line).group(0)
                 start_pos = int(start_pos)
                 end_pos = start_pos + self.distance
+                ref_bool = True
+
+        if not ref_bool:
+            raise IndexError("reference SNP %s not in tped-file" % self.snpname)
+
         tpedfile.seek(0)
 
         # main extraction of the desired snps
