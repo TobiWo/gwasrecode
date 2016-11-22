@@ -34,7 +34,7 @@ If you find errors which make no sense or you have a problem in general, please 
 ## Notes
 In the near future I want to add extensive comments for the different functions and also to clean the code.
 
-I have to admit that the program is not coded in best coding practice in version 0.34.
+I have to admit that the program is not coded in best coding practice in version 0.35.
 
 ## Example usage (this is also written in the ReadMe)
 
